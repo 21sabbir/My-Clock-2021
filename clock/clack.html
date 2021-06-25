@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL CLACK </title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+        
+        .clock {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(0, 255, 0);
+            border-radius: 30px;
+            background: linear-gradient(145deg, #000000, #000000);
+            box-shadow: 5px 5px 0px #00ffea, -5px -5px 0px #00ff2a;
+            padding: 50px 10px;
+            width: 600px;
+            height: 100px;
+            text-align: center;
+            font-size: 100px;
+        }
+        
+        .day {
+            position: absolute;
+            left: 50%;
+            top: 38%;
+            transform: translate(-50%, -38%);
+            color: rgb(0, 247, 255);
+            font-size: 60px;
+        }
+        
+        button {
+            border-radius: 30px;
+            background: linear-gradient(145deg, #e100ff, #0385ff);
+            box-shadow: 5px 5px 0px #03e2ff, -5px -5px 0px #ff0202;
+            padding: 20px 30px;
+            outline: none;
+            position: absolute;
+            left: 50%;
+            top: 77%;
+            transform: translate(-50%, -77%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="MYCLACK" class="clock"></div>
+    <div id="getday" class="day"></div>
+    <button onclick="showtime();">Show Time</button>
+    <script type="text/javascript">
+        function showtime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var day = date.getDay();
+            var session = "AM";
+
+            if (day == 0) {
+                day = "Sunday"
+            }
+            if (day == 1) {
+                day = "Monday"
+            }
+            if (day == 2) {
+                day = "Tuseday"
+            }
+            if (day == 3) {
+                day = "Wednesday"
+            }
+            if (day == 4) {
+                day = "Thursday"
+            }
+            if (day == 5) {
+                day = "Friday"
+            }
+            if (day == 6) {
+                day = "Sunday"
+            }
+            if (h == 0) {
+                h = 12;
+            }
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+
+            }
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+            // other system same work
+
+            // h = (h < 10) ? "0" + h : h;
+            // h = (m < 10) ? "0" + m : m;
+            // h = (s < 10) ? "0" + s : s;
+
+            var time = h + ":" + m + ":" + s + "" + session;
+            // document.getElementById("MYCLACK").innerText = time;
+            // document.getElementById("MYCLACK").textContent = time;
+            document.getElementById("MYCLACK").innerHTML = time;
+            document.getElementById("getday").innerText = day;
+            setTimeout(showtime, 1000);
+
+        }
+    </script>
+</body>
+
+</html>
